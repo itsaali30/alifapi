@@ -1,0 +1,6 @@
+[build]
+  publish = "dist"  # Your front-end build directory
+  command = "npm run build"  # The build command for your front-end
+
+[functions]
+  directory = "functions"  # The directory where your serverless functions are stored
