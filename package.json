@@ -1,0 +1,11 @@
+{
+  "name": "netlify-bigquery",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build",  // Frontend build command
+    "start": "netlify dev"     // Local development
+  },
+  "dependencies": {
+    "@google-cloud/bigquery": "^5.0.0"
+  }
+}
