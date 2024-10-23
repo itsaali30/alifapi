@@ -1,0 +1,31 @@
+name: Deploy to Netlify with BigQuery
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Set up Google Cloud credentials
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      run: |
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" > /tmp/keyfile.json
+
+    - name: Build and deploy to Netlify
+      run: npm run build && netlify deploy --prod
